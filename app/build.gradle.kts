@@ -2,6 +2,9 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("com.google.devtools.ksp")
+    id("com.google.dagger.hilt.android")
+    kotlin("plugin.serialization") version "2.1.20"
 }
 
 android {
@@ -40,6 +43,22 @@ android {
 }
 
 dependencies {
+    implementation(libs.core)
+    implementation(libs.androidx.compose.foundation)
+    ksp(libs.ksp)
+
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.compose.material)
+    ksp(libs.androidx.room.compiler)
+
+    implementation(libs.androidx.room.paging)
+    implementation(libs.hilt.navigation.compose)
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.gson)
+
+    implementation (libs.kotlinx.coroutines.android)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
